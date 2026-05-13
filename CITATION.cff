@@ -3,6 +3,15 @@ title: "Aiki-Sol: per-protocol calibrated protein solubility prediction"
 message: "If you use Aiki-Sol in your research, please cite the companion paper and (optionally) this software entry."
 type: software
 authors:
+  - family-names: Rajagopalan
+    given-names: Riya
+    affiliation: "Aikium, Inc."
+  - family-names: Sharma Meda
+    given-names: Radheesh
+    affiliation: "Aikium, Inc."
+  - family-names: Shastry
+    given-names: Shankar
+    affiliation: "Aikium, Inc."
   - family-names: Mysore
     given-names: Venkatesh
     email: venkatesh@aikium.com
@@ -12,7 +21,7 @@ repository-code: "https://github.com/aikium-public/aiki-sol"
 url: "https://github.com/aikium-public/aiki-sol"
 license: Apache-2.0
 version: 0.2.0
-date-released: "2026-05-12"
+date-released: "2026-05-13"
 keywords:
   - protein solubility
   - protein language models
@@ -20,10 +29,14 @@ keywords:
   - bioinformatics
 preferred-citation:
   type: article
-  title: "Protein solubility prediction has been over-engineered and under-curated: a cluster-disjoint benchmark"
+  title: "Protein solubility prediction is bottlenecked by training-pool curation, not architectural complexity"
   authors:
+    - family-names: Rajagopalan
+      given-names: Riya
+    - family-names: Sharma Meda
+      given-names: Radheesh
+    - family-names: Shastry
+      given-names: Shankar
     - family-names: Mysore
       given-names: Venkatesh
-  journal: "Nature Communications"
   year: 2026
-  notes: "In review. bioRxiv link added on submission."

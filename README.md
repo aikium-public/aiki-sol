@@ -7,18 +7,20 @@ regimes (3,000×g/10 min, 6,000×g, 32,000×g, eSol/PURE 21,600×g/30 min, 100,0
 and returns an ensemble-averaged probability per regime, plus a stringency-
 marginal probability for when the downstream protocol is unspecified.
 
-The released checkpoint (v0.2.0, **Aiki-Sol-v2**) is a single fine-tuned ESM-2
+The released checkpoint (**Aiki-Sol v2**) is a single fine-tuned ESM-2
 650M backbone with a 6-output head: outputs 1–5 are per-stringency
 `P(soluble | regime)` and output 6 is a dedicated marginal head trained on
 stringency-unknown rows, recommended when the caller doesn't know which
-protocol matters. Trained on the 147,574-row canonical-clean pool under
-Apache 2.0; the loss adds a soft monotonicity penalty across consecutive
-per-stringency outputs during training (see the companion paper §Methods).
+protocol matters. Trained on the **Aiki-Sol Dataset** (147,574 rows,
+license-clean, Apache 2.0). The loss adds a soft monotonicity penalty
+across consecutive per-stringency outputs during training (see the
+companion paper §Methods).
 
 A research-tier checkpoint (`aikisol_v2_research_n3v2_229k_full.pt`) trained
-on the larger 229,349-row pool (which adds CC-BY-NC-ND-tier upstream sources)
-is available in the same Zenodo deposit under a research-use notice; load it
-by passing the path to `Aikisol.from_pretrained(checkpoint=...)`.
+on the Aiki-Sol Dataset extended to 229,349 rows (adding CC-BY-NC-ND-tier
+upstream sources) is available in the same Zenodo deposit under a
+research-use notice; load it by passing the path to
+`Aikisol.from_pretrained(checkpoint=...)`.
 
 For methods, benchmarks, and limitations, see the companion paper *(citation
 below)*.
@@ -112,7 +114,8 @@ normalized, meta = normalize_sequence("MGSSHHHHHHGSGSGEDQAEILVTQNMK")
 - Head: `Linear(1280→256) → ReLU → Dropout(0.1) → Linear(256→6) → sigmoid`.
 - Released checkpoint (Apache-tier): `aikisol_v2_canonical_147k_full.pt`.
 - Research-tier checkpoint (CC-BY-NC-ND): `aikisol_v2_research_n3v2_229k_full.pt`.
-- Training pool sizes: 147,574 (canonical, Apache); 229,349 (n3v2, research-tier).
+- Training corpus: the Aiki-Sol Dataset — 147,574 rows (canonical, Apache)
+  with a 229,349-row research-tier extension.
 - Splits: MMseqs2 cluster-disjoint at 25% identity, 5 folds for evaluation.
 
 ## Redistribution & license policy
@@ -122,8 +125,8 @@ normalized, meta = normalize_sequence("MGSSHHHHHHGSGSGEDQAEILVTQNMK")
 | Code (this repo) | Apache 2.0 |
 | Released Apache-tier checkpoint | Apache 2.0 |
 | Research-tier checkpoint | CC-BY-NC-ND 4.0 |
-| Canonical-147K training pool (Zenodo) | CC-BY 4.0 |
-| n3v2-229K training pool | not redistributed (upstream license restrictions) |
+| Aiki-Sol Dataset, canonical tier (147K rows; Zenodo) | CC-BY 4.0 |
+| Aiki-Sol Dataset, research-tier extension (229K rows) | not redistributed (upstream license restrictions) |
 | ESM-2 backbone weights | MIT (Meta), downloaded from HuggingFace |
 
 Sources with explicit prohibitions on commercial use or repackaging are
@@ -148,7 +151,7 @@ If you use Aiki-Sol in your work, please cite:
   author  = {Mysore, Venkatesh and others},
   year    = {2026},
   note    = {Companion code/data: github.com/aikium-public/aiki-sol;
-             Zenodo DOI: 10.5281/zenodo.20102408;
+             Zenodo DOI: 10.5281/zenodo.20151819;
              journal/preprint citation added on acceptance.}
 }
 ```
@@ -156,7 +159,7 @@ If you use Aiki-Sol in your work, please cite:
 ## Links
 
 - Paper: *(arXiv/bioRxiv link added on submission)*
-- Zenodo deposit: [10.5281/zenodo.20102408](https://doi.org/10.5281/zenodo.20102408)
+- Zenodo deposit: [10.5281/zenodo.20151819](https://doi.org/10.5281/zenodo.20151819)
 - Hosted demo: `https://aikium--aikisol-landing-page.modal.run/`
 - Issues / questions: https://github.com/aikium-public/aiki-sol/issues
 
