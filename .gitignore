@@ -1,0 +1,38 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
+.eggs/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Filled-in manifest carries unpublished numbers; example.yaml is the public template
+validation/paper_numbers_manifest.yaml
+
+# Local checkpoints — distributed via Zenodo, not git
+checkpoints/*
+!checkpoints/.gitkeep
+docker/checkpoints/*
+!docker/checkpoints/.gitkeep
+
+# Local data and figures
+data/*
+!data/.gitkeep
+figures/*
+!figures/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db

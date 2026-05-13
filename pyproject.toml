@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aikisol"
+version = "0.2.0"
+description = "Per-protocol calibrated protein solubility prediction (ESM-2 650M fine-tune with 5 per-stringency outputs + a stringency-marginal output)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Venkatesh Mysore", email = "venkatesh@aikium.com" },
+    { name = "Aikium, Inc." },
+]
+keywords = [
+    "protein-solubility",
+    "protein-language-model",
+    "esm2",
+    "bioinformatics",
+    "deep-learning",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "torch>=2.1",
+    # transformers 4.x is the verified-compatible track; 5.x introduced an
+    # import-time torch.library.custom_op that breaks on torch <2.5.
+    "transformers>=4.40,<5.0",
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scipy>=1.11",
+    "tqdm>=4.65",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.4",
+]
+
+[project.urls]
+Homepage      = "https://github.com/aikium-public/aiki-sol"
+Repository    = "https://github.com/aikium-public/aiki-sol"
+Issues        = "https://github.com/aikium-public/aiki-sol/issues"
+"Companion paper" = "https://github.com/aikium-public/aiki-sol#citation"
+
+[project.scripts]
+aikisol-predict = "aikisol.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["aikisol*"]
+exclude = ["tests*", "scripts*", "scripts.release*", "modal*", "docker*", "validation*", "configs*", "data*", "checkpoints*", "figures*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

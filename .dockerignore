@@ -1,0 +1,22 @@
+# Keep build context small.
+.git
+.github
+__pycache__
+**/__pycache__
+*.pyc
+*.egg-info
+build
+dist
+.venv
+venv
+
+tests/
+docs/
+figures/
+data/
+validation/
+configs/
+*.parquet
+*.csv
+*.tar.gz
+docker/checkpoints/*.pt.example

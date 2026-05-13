@@ -1,0 +1,59 @@
+# End-to-end FASTA scoring image for AikiSol.
+#
+# Differs from docker/Dockerfile in that the released curve-head checkpoints
+# are baked into the image at /checkpoints, so users do not need to mount
+# anything beyond an HF cache (and even that is optional — the entrypoint will
+# pull ESM-2 650M weights on first run).
+#
+# Build:
+#   # Stage the 3-seed checkpoints next to this file before building.
+#   cp /path/to/released_curve_head_s{42,7,13}.pt docker/checkpoints/
+#   docker build -f docker/Dockerfile.full -t aikisol:full .
+#
+# Run:
+#   docker run --rm -it \
+#     -v "$PWD":/work -w /work \
+#     aikisol:full --fasta my.fasta --out predictions.csv
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        git build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir \
+        torch==2.4.0 --index-url https://download.pytorch.org/whl/cpu
+
+RUN pip install --no-cache-dir \
+        numpy>=1.24 \
+        pandas>=2.0 \
+        scipy>=1.11 \
+        tqdm \
+        transformers>=4.40 \
+        sentencepiece \
+        protobuf \
+        accelerate \
+        huggingface-hub
+
+ENV HF_HOME=/hf
+ENV AIKISOL_CKPT_DIR=/checkpoints
+VOLUME ["/hf"]
+
+COPY aikisol/ aikisol/
+COPY scripts/predict.py scripts/predict.py
+COPY pyproject.toml ./
+COPY README.md ./
+COPY LICENSE ./
+COPY docker/checkpoints/ /checkpoints/
+
+RUN pip install --no-cache-dir .
+
+# Pre-download the ESM-2 650M backbone so the first scoring call is fast and
+# offline-friendly. Comment out if you'd rather rely on a mounted HF cache.
+RUN python -c "from transformers import AutoModel, AutoTokenizer; \
+    AutoTokenizer.from_pretrained('facebook/esm2_t33_650M_UR50D'); \
+    AutoModel.from_pretrained('facebook/esm2_t33_650M_UR50D')"
+
+ENTRYPOINT ["aikisol-predict"]

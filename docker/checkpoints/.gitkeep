@@ -1,0 +1,2 @@
+# Place released_curve_head_s{42,7,13}.pt files here before running
+# docker build -f docker/Dockerfile.full . to bake them into the image.

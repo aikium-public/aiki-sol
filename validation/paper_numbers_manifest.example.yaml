@@ -1,0 +1,72 @@
+# AikiSol — manuscript claim provenance manifest (EXAMPLE / TEMPLATE).
+#
+# Copy this file to `paper_numbers_manifest.yaml` and replace each
+# `expected:` placeholder with the real value from the corresponding
+# deposited result.json. The 0.000 values below are illustrative only;
+# `validation/reproduce_paper_numbers.py` will fail every check until they
+# are filled in.
+#
+# Schema:
+#   tag                : human-readable label (used in console output)
+#   file               : path relative to the deposit root
+#   field              : dotted path inside the JSON
+#   expected           : expected value (number or string)
+#   tolerance          : optional absolute tolerance for numeric checks (default 0.001)
+#   manuscript_section : optional pointer to the .tex location
+#   sub_field_check    : optional list of dotted paths that must also exist
+#                        (e.g. n_folds, ts_utc, csv) so the artefact is well-formed.
+
+# === Table 1: cluster-disjoint 5-fold ===
+- tag: "Table 1, AikiSol (released) - mean_prob_auc"
+  file: results/cluster_disjoint_5fold/aikisol_release_ensemble.json
+  field: cv.mean_prob_auc.mean
+  expected: 0.000        # TODO: fill from JSON
+  tolerance: 0.001
+  manuscript_section: "Table 1, row 'AikiSol (released, 3-seed)'"
+  sub_field_check:
+    - cv.mean_prob_auc.std
+    - cv.n_folds
+    - csv
+    - normalized
+
+# === External cohort head-to-head ===
+- tag: "External: ProgSol-yeast - AikiSol-distilled"
+  file: results/external_benchmarks/aikisol_distilled_progsol_yeast.json
+  field: mean_prob_auc
+  expected: 0.000        # TODO
+  tolerance: 0.005
+  manuscript_section: "Table SI: external"
+  sub_field_check:
+    - n_scored
+    - csv
+    - normalized
+- tag: "External: ProtSolM-eSol-2.2K - AikiSol-distilled"
+  file: results/external_benchmarks/aikisol_distilled_protsolm_esol.json
+  field: mean_prob_auc
+  expected: 0.000        # TODO
+  tolerance: 0.005
+- tag: "External: Foldit-117 - AikiSol-distilled"
+  file: results/external_benchmarks/aikisol_distilled_foldit.json
+  field: mean_prob_auc
+  expected: 0.000        # TODO
+  tolerance: 0.005
+- tag: "External: PLM_Sol-EOI216 - AikiSol-distilled"
+  file: results/external_benchmarks/aikisol_distilled_plmsol_eoi216.json
+  field: mean_prob_auc
+  expected: 0.000        # TODO
+  tolerance: 0.005
+
+# === Continuous-axis side-finding (engineered-scaffold dataset 2, rho) ===
+- tag: "engineered-scaffold dataset 2 continuous - NetSolP rho"
+  file: results/external_benchmarks/netsolp_engineered_scaffold_2_continuous.json
+  field: rho
+  expected: 0.000        # TODO
+  tolerance: 0.01
+- tag: "engineered-scaffold dataset 2 continuous - boel-excluded ridge baseline rho"
+  file: results/external_benchmarks/ridge_boel_excluded_engineered_scaffold_2.json
+  field: rho.mean
+  expected: 0.000        # TODO
+  tolerance: 0.01
+  sub_field_check:
+    - rho.std
+    - n_seeds

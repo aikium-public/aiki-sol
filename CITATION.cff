@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+title: "Aiki-Sol: per-protocol calibrated protein solubility prediction"
+message: "If you use Aiki-Sol in your research, please cite the companion paper and (optionally) this software entry."
+type: software
+authors:
+  - family-names: Mysore
+    given-names: Venkatesh
+    email: venkatesh@aikium.com
+    affiliation: "Aikium, Inc."
+  - name: "Aikium, Inc."
+repository-code: "https://github.com/aikium-public/aiki-sol"
+url: "https://github.com/aikium-public/aiki-sol"
+license: Apache-2.0
+version: 0.2.0
+date-released: "2026-05-12"
+keywords:
+  - protein solubility
+  - protein language models
+  - ESM-2
+  - bioinformatics
+preferred-citation:
+  type: article
+  title: "Protein solubility prediction has been over-engineered and under-curated: a cluster-disjoint benchmark"
+  authors:
+    - family-names: Mysore
+      given-names: Venkatesh
+  journal: "Nature Communications"
+  year: 2026
+  notes: "In review. bioRxiv link added on submission."
