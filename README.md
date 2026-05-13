@@ -151,7 +151,7 @@ If you use Aiki-Sol in your work, please cite:
   author  = {Mysore, Venkatesh and others},
   year    = {2026},
   note    = {Companion code/data: github.com/aikium-public/aiki-sol;
-             Zenodo DOI: 10.5281/zenodo.20151819;
+             Zenodo DOI: 10.5281/zenodo.20151817;
              journal/preprint citation added on acceptance.}
 }
 ```
@@ -159,7 +159,7 @@ If you use Aiki-Sol in your work, please cite:
 ## Links
 
 - Paper: *(arXiv/bioRxiv link added on submission)*
-- Zenodo deposit: [10.5281/zenodo.20151819](https://doi.org/10.5281/zenodo.20151819)
+- Zenodo deposit: [10.5281/zenodo.20151817](https://doi.org/10.5281/zenodo.20151817)
 - Hosted demo: `https://aikium--aikisol-landing-page.modal.run/`
 - Issues / questions: https://github.com/aikium-public/aiki-sol/issues
 

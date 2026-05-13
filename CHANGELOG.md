@@ -29,7 +29,7 @@ stringency-marginal output for inputs without a specified protocol.
 
 ### Companion Zenodo deposit
 
-`10.5281/zenodo.20151819` ships:
+`10.5281/zenodo.20151817` ships:
 
 - `aikisol_v2_canonical_147k_full.pt` (~2.4 GB, Apache 2.0)
 - 5 per-fold checkpoints `aikisol_v2_canonical_147k_fold{0..4}.pt`
