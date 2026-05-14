@@ -29,7 +29,7 @@ keywords:
   - bioinformatics
 preferred-citation:
   type: article
-  title: "Protein solubility prediction is bottlenecked by training-pool curation, not architectural complexity"
+  title: "Protein solubility depends on centrifugation: Aiki-Sol, a per-regime predictor for E. coli"
   authors:
     - family-names: Rajagopalan
       given-names: Riya

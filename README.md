@@ -146,8 +146,8 @@ If you use Aiki-Sol in your work, please cite:
 
 ```bibtex
 @article{aikisol2026,
-  title   = {Protein solubility prediction is bottlenecked by
-             training-pool curation, not architectural complexity},
+  title   = {Protein solubility depends on centrifugation:
+             {A}iki-{S}ol, a per-regime predictor for {\it E.~coli}},
   author  = {Mysore, Venkatesh and others},
   year    = {2026},
   note    = {Companion code/data: github.com/aikium-public/aiki-sol;
